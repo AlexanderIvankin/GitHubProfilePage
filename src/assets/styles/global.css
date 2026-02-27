@@ -11,8 +11,16 @@ body {
 }
 
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
+  --primary-color: #20293a;
+  --secondary-color: #111629;
+
+  --gradient-color-start: #12172b;
+  --gradient-color-finish: #1c1b45;
+  
+
+  --focus-calor: #2a479b;
+
+
   --success-color: #28a745;
   --danger-color: #dc3545;
 }
