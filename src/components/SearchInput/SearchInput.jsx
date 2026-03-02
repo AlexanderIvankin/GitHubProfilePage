@@ -1,33 +1,45 @@
-import React, { useState } from "react";
+// SearchInput.jsx
+import React, { useState, useEffect } from "react";
 import "./SearchInput.css";
 import SearchIcon from "./SearchIcon";
 import SearchResult from "./SearchResult";
 
-function SearchInput() {
+function SearchInput({ onSelectProfile }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
+  const [exactUser, setExactUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      setExactUser(null);
+      setNotFound(false);
+    }
+  }, [searchTerm]);
 
   const handleSearch = async () => {
     try {
       if (!searchTerm.trim()) return;
 
-      // Делаем запрос
+      setLoading(true);
+      setNotFound(false);
+      setExactUser(null);
+
       const response = await fetch(
-        `https://api.github.com/search/users?q=${searchTerm}+in:login`,
+        `https://api.github.com/users/${encodeURIComponent(searchTerm)}`
       );
 
-      const data = await response.json();
-
-      // Смотрим, что пришло
-      console.log("Весь ответ:", data);
-      console.log("Всего найдено:", data.total_count);
-      console.log("Массив пользователей:", data.items);
-
-      setTotalCount(data.total_count);
-      setResults(data.items);
+      if (response.status === 404) {
+        setNotFound(true);
+      } else if (response.ok) {
+        const user = await response.json();
+        setExactUser(user);
+      }
     } catch (error) {
       console.error("Ошибка:", error);
+      setNotFound(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -37,12 +49,17 @@ function SearchInput() {
     }
   };
 
+  const handleSelectUser = (username) => {
+    onSelectProfile(username);
+    setSearchTerm("");
+    setExactUser(null);
+  };
+
   return (
     <div className="search-wrapper">
       <div className="search-input-container">
         <div className="search-button" onClick={handleSearch}>
-          {" "}
-          <SearchIcon color="var(--text-color-discription)" size="20" />
+          <SearchIcon color="var(--text-color-description)" size="20" />
         </div>
 
         <input
@@ -52,17 +69,24 @@ function SearchInput() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
+          placeholder="Enter exact GitHub username..."
         />
       </div>
 
-      {totalCount > 0 &&
-        (() => {
-          const user = results.filter((user) => {
-            return user.login.toLowerCase() === searchTerm.toLowerCase();
-          });
+      {loading && <div className="search-loading">Searching...</div>}
 
-          return user.length === 1 && <SearchResult username={user[0].login} />;
-        })()}
+      {notFound && (
+        <div className="search-result-fail">
+          No user found for "{searchTerm}"
+        </div>
+      )}
+
+      {exactUser && (
+        <SearchResult 
+          user={exactUser} 
+          onSelect={handleSelectUser} 
+        />
+      )}
     </div>
   );
 }

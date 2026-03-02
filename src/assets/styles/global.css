@@ -20,14 +20,13 @@ input:-webkit-autofill {
   --primary-color: #20293a;
   --secondary-color: #111629;
 
-  --gradient-color-start: #12172b;
-  --gradient-color-finish: #1c1b45;
+  --gradient-color:  linear-gradient(95deg, #111729 3%, #1d1b48 99.61%);
 
   --text-color-title: rgb(221, 216, 216);
-  --text-color-discription: grey;
+  --text-color-description: grey;
 
 
-  --focus-calor: #2a479b;
+  --focus-color: #2a479b;
 
 
   --success-color: #28a745;

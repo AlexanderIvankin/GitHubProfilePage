@@ -1,8 +1,8 @@
 .profile-page {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    background-color: var(--primary-color);
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--primary-color);
 }
 
 .background-image {
@@ -17,4 +17,21 @@
   height: 100%;
 
   /* z-index: 0; */
+}
+
+.user-profile {
+  display: flex;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 10px;
+  border: 10px solid var(--primary-color);
+}
+
+.profile-name {
+  color: brown;
 }
