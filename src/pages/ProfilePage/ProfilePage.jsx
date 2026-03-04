@@ -30,11 +30,13 @@ const ProfilePage = () => {
         <div className="user-profile">
           {console.log(user)}
           <div className="profile-top">
-            <img
-              className="profile-avatar"
-              src={user.avatar_url}
-              alt="user avatar"
-            />
+            <div className="profile-avatar-container">
+              <img
+                className="profile-avatar"
+                src={user.avatar_url}
+                alt="user avatar"
+              />
+            </div>
             <div className="profile-stats">
               <div className="profile-followers">
                 <span className="profile-followers-text">Folowers</span>
@@ -50,7 +52,9 @@ const ProfilePage = () => {
               </div>
               <div className="profile-location">
                 <span className="profile-location-text">Location</span>
-                <span className="profile-location-info">{user.location}</span>
+                <span className="profile-location-info">
+                  {user.location || "Unknown"}
+                </span>
               </div>
             </div>
           </div>
