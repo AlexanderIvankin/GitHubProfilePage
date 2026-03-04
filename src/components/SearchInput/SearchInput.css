@@ -1,14 +1,24 @@
 .search-wrapper {
-  position: relative;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 35%;
-  padding: 30px;
+  width: 35%;
+  
   margin: 0 auto;
   color: var(--text-color-title);
   border-radius: 5px;
+}
+
+@media (max-width: 888px) {
+  .search-wrapper {
+    width: 50%;
+  }
 }
 
 .search-input-container {

@@ -69,7 +69,7 @@ function SearchInput({ onSelectProfile }) {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Enter exact GitHub username..."
+          placeholder="Enter GitHub username..."
         />
 
         <div className="search-result-wrapper">
