@@ -26,7 +26,7 @@ function SearchInput({ onSelectProfile }) {
       setExactUser(null);
 
       const response = await fetch(
-        `https://api.github.com/users/${encodeURIComponent(searchTerm)}`
+        `https://api.github.com/users/${encodeURIComponent(searchTerm)}`,
       );
 
       if (response.status === 404) {
@@ -71,22 +71,21 @@ function SearchInput({ onSelectProfile }) {
           onKeyDown={handleKeyDown}
           placeholder="Enter exact GitHub username..."
         />
-      </div>
 
-      {loading && <div className="search-loading">Searching...</div>}
+        <div className="search-result-wrapper">
+          {loading && <div className="search-loading">Searching...</div>}
 
-      {notFound && (
-        <div className="search-result-fail">
-          No user found for "{searchTerm}"
+          {notFound && (
+            <div className="search-result-fail">
+              No user found for "{searchTerm}"
+            </div>
+          )}
+
+          {exactUser && (
+            <SearchResult user={exactUser} onSelect={handleSelectUser} />
+          )}
         </div>
-      )}
-
-      {exactUser && (
-        <SearchResult 
-          user={exactUser} 
-          onSelect={handleSelectUser} 
-        />
-      )}
+      </div>
     </div>
   );
 }

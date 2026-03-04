@@ -23,7 +23,7 @@
   justify-content: center;
   padding: 5px;
   left: 15px;
-  top: 50%;
+  top: 22px;
   transform: translateY(-50%);
   background-color: transparent;
   cursor: pointer;
@@ -52,6 +52,11 @@
   border-color: var(--focus-color);
 }
 
+.search-result-wrapper {
+  display: flex;
+  width: 100%;
+}
+
 .search-loading {
   margin-top: 15px;
   padding: 10px;
@@ -60,6 +65,9 @@
 }
 
 .search-result-fail {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 15px;
   padding: 10px;
   text-align: center;

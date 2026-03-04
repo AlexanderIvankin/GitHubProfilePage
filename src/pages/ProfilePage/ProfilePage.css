@@ -36,6 +36,8 @@
   /* border: 10px solid var(--primary-color); */
   outline: 10px solid var(--primary-color);
 
+  background-color: var(--primary-color);
+
   margin-right: 50px;
 }
 
