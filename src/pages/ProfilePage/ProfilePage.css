@@ -53,11 +53,19 @@
   flex-direction: column;
 
   padding: 0 10%;
+  padding-bottom: 3%;
 }
 
 @media (max-width: 1200px) {
   .user-profile {
     padding: 0 5%;
+    padding-bottom: 5%;
+  }
+}
+
+@media (max-width: 769px) {
+  .user-profile {
+    padding-bottom: 10%;
   }
 }
 

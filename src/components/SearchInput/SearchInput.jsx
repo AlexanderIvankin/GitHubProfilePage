@@ -66,6 +66,8 @@ function SearchInput({ onSelectProfile }) {
           id="search"
           className="search-input"
           type="text"
+          maxLength={50}
+          minLength={2}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}

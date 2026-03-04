@@ -62,6 +62,14 @@
   border-color: var(--focus-color);
 }
 
+@media (max-width: 555px) {
+  .search-input::placeholder {
+    opacity: 0;
+    color: transparent;
+    visibility: hidden; 
+  }
+}
+
 .search-result-wrapper {
   display: flex;
   width: 100%;
@@ -76,6 +84,9 @@
 
 .search-result-fail {
   display: flex;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
   justify-content: center;
   width: 100%;
   margin-top: 15px;
