@@ -1,0 +1,324 @@
+.user-profile {
+  display: flex;
+  position: absolute;
+
+  top: 265px;
+
+  width: 100%;
+
+  flex-direction: column;
+
+  padding: 0 10%;
+  padding-bottom: 3%;
+}
+
+@media (max-width: 1200px) {
+  .user-profile {
+    padding: 0 5%;
+    padding-bottom: 5%;
+  }
+}
+
+@media (max-width: 769px) {
+  .user-profile {
+    padding-bottom: 10%;
+  }
+}
+
+.profile-avatar-container {
+  width: 140px;
+  height: 140px;
+
+  background-color: var(--primary-color);
+  border: 10px solid var(--primary-color);
+  border-radius: 15px;
+
+  margin-right: 50px;
+}
+
+.profile-avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+
+  border-radius: 10px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-top {
+  display: flex;
+
+  margin-bottom: 40px;
+}
+
+@media (max-width: 888px) {
+  .profile-top {
+    flex-direction: column;
+  }
+}
+
+.profile-stats {
+  display: flex;
+
+  align-items: flex-end;
+
+  padding: 10px;
+}
+
+@media (max-width: 888px) {
+  .profile-stats {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.profile-followers,
+.profile-following,
+.profile-location {
+  display: flex;
+
+  padding: 15px;
+
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+}
+
+.profile-followers,
+.profile-following {
+  margin-right: 20px;
+}
+
+
+.profile-followers-text,
+.profile-following-text,
+.profile-location-text {
+  display: flex;
+  align-items: center;
+  color: var(--text-color-description);
+  font-weight: 400;
+
+  margin-right: 30px;
+}
+
+.profile-followers-count::before,
+.profile-following-count::before,
+.profile-location-info::before {
+  content: '';
+  position: absolute;
+
+  left: -15px;
+  top: -5px;
+  bottom: -5px;
+
+  width: 1px;
+
+  background-color: var(--text-color-description);
+}
+
+.profile-followers-count,
+.profile-following-count,
+.profile-location-info {
+  display: flex;
+  align-items: center;
+  color: var(--text-color-title);
+  font-weight: 500;
+
+  position: relative;
+}
+
+.profile-name {
+  color: var(--text-color-title);
+
+  font-size: 30px;
+  font-weight: 500;
+
+  margin-bottom: 10px;
+}
+
+.profile-description {
+  color: var(--text-color-description);
+  font-weight: 500;
+
+  margin-bottom: 25px;
+}
+
+.profile-repos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+
+  width: 100%;
+  max-width: 100%;
+
+  padding: 5px;
+
+  gap: 30px;
+
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .profile-repos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-repo-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: var(--gradient-color);
+  border-radius: 10px;
+  height: 100%;
+  min-width: 0;
+}
+
+.repo-card-header {
+  color: var(--text-color-title);
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repo-card-description {
+  color: var(--text-color-description);
+  font-weight: 500;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.repo-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.repo-card-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+
+@media (max-width: 768px) {
+  .repo-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .repo-card-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .repo-card-updated {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .repo-card-stats {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .repo-card-license,
+  .repo-card-forks,
+  .repo-card-stars {
+    padding-left: 20px;
+    background-size: 16px 16px;
+  }
+  
+  .license-text,
+  .forks-text,
+  .stars-text {
+    font-size: 14px;
+    max-width: 50px;
+  }
+}
+
+.repo-card-stats {
+  display: flex;
+  align-items: center;
+}
+
+.repo-card-license,
+.repo-card-forks,
+.repo-card-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 25px;
+  min-width: 0;
+}
+
+
+.repo-card-license {
+  background-image: url('../../assets/images/Chield_alt.svg');
+}
+
+.repo-card-forks {
+  background-image: url('../../assets/images/Nesting.svg');
+}
+
+.repo-card-stars {
+  background-image: url('../../assets/images/Star.svg');
+}
+
+.license-text,
+.forks-text,
+.stars-text {
+  color: var(--text-color-description);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60px;
+}
+
+.repo-card-updated {
+  display: flex;
+  align-items: center;
+}
+
+.updated-text {
+  color: var(--text-color-description);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.profile-view-all-repos {
+  display: flex;
+
+  justify-content: center;
+}
+
+.view-repos-button {
+  background-color: inherit;
+  padding: 5px;
+  cursor: pointer;
+  color: var(--text-color-title);
+  font-weight: 400;
+
+  border: none;
+}
