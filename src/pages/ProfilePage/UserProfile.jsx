@@ -89,50 +89,66 @@ function UserProfile({ user }) {
         <p className="profile-description">{user.bio || "No bio available"}</p>
       </div>
 
-      <div className="profile-repos">
-        {displayedRepos.map((repo) => (
-          <div key={repo.id} className="profile-repo-card">
-            <h3 className="repo-card-header">{repo.name}</h3>
-            <p className="repo-card-description">
-              {repo.description || "No description"}
-            </p>
-
-            <div className="repo-card-footer">
-              <div className="repo-card-stats">
-                {repo.license && (
-                  <div className="repo-card-license">
-                    <span className="license-text">{repo.license.spdx_id}</span>
-                  </div>
-                )}
-                <div className="repo-card-forks">
-                  <span className="forks-text">{repo.forks_count}</span>
-                </div>
-                <div className="repo-card-stars">
-                  <span className="stars-text">{repo.stargazers_count}</span>
-                </div>
-              </div>
-
-              <div className="repo-card-updated">
-                <span className="updated-text">
-                  Updated {new Date(repo.updated_at).toLocaleDateString()}
-                </span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {repos.length > defaultShowRepos && (
-        <div className="profile-view-all-repos">
-          <button
-            className="view-repos-button"
-            onClick={() => setShowAllRepos(!showAllRepos)}
-          >
-            {showAllRepos
-              ? "Show less"
-              : `View all repositories (${repos.length})`}
-          </button>
+      {loading && (
+        <div className="repos-loading">
+          <p>Loading repositories...</p>
         </div>
+      )}
+
+      {!loading && repos.length === 0 && (
+        <div className="no-repos">
+          <p>No repositories found</p>
+        </div>
+      )}
+
+      {!loading && repos.length > 0 && (
+        <>
+          <div className="profile-repos">
+            {displayedRepos.map((repo) => (
+              <div key={repo.id} className="profile-repo-card">
+                <h3 className="repo-card-header">{repo.name}</h3>
+                <p className="repo-card-description">
+                  {repo.description || "No description"}
+                </p>
+
+                <div className="repo-card-footer">
+                  <div className="repo-card-stats">
+                    {repo.license && (
+                      <div className="repo-card-license">
+                        <span className="license-text">{repo.license.spdx_id}</span>
+                      </div>
+                    )}
+                    <div className="repo-card-forks">
+                      <span className="forks-text">{repo.forks_count}</span>
+                    </div>
+                    <div className="repo-card-stars">
+                      <span className="stars-text">{repo.stargazers_count}</span>
+                    </div>
+                  </div>
+
+                  <div className="repo-card-updated">
+                    <span className="updated-text">
+                      Updated {new Date(repo.updated_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {repos.length > defaultShowRepos && (
+            <div className="profile-view-all-repos">
+              <button
+                className="view-repos-button"
+                onClick={() => setShowAllRepos(!showAllRepos)}
+              >
+                {showAllRepos
+                  ? "Show less"
+                  : `View all repositories (${repos.length})`}
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -323,3 +323,13 @@
 
   border: none;
 }
+
+.repos-loading,
+.no-repos {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color-description);
+  background: var(--secondary-color);
+  border-radius: 10px;
+  margin: 20px 0;
+}
