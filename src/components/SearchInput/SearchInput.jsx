@@ -1,4 +1,3 @@
-// SearchInput.jsx
 import React, { useState, useEffect } from "react";
 import "./SearchInput.css";
 import SearchIcon from "./SearchIcon";
@@ -27,6 +26,11 @@ function SearchInput({ onSelectProfile }) {
 
       const response = await fetch(
         `https://api.github.com/users/${encodeURIComponent(searchTerm)}`,
+        {
+          headers: {
+            Authorization: `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`,
+          },
+        },
       );
 
       if (response.status === 404) {
@@ -34,6 +38,7 @@ function SearchInput({ onSelectProfile }) {
       } else if (response.ok) {
         const user = await response.json();
         setExactUser(user);
+        setNotFound(false);
       }
     } catch (error) {
       console.error("Ошибка:", error);
@@ -53,6 +58,7 @@ function SearchInput({ onSelectProfile }) {
     onSelectProfile(username);
     setSearchTerm("");
     setExactUser(null);
+    setNotFound(false);
   };
 
   return (
@@ -77,13 +83,13 @@ function SearchInput({ onSelectProfile }) {
         <div className="search-result-wrapper">
           {loading && <div className="search-loading">Searching...</div>}
 
-          {notFound && (
+          {!loading && notFound && (
             <div className="search-result-fail">
-              No user found for "{searchTerm}"
+              Profile "{searchTerm}" not found
             </div>
           )}
 
-          {exactUser && (
+          {!loading && exactUser && (
             <SearchResult user={exactUser} onSelect={handleSelectUser} />
           )}
         </div>
