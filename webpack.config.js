@@ -5,12 +5,10 @@ module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js", // Простое имя для отладки
+    filename: "static/js/[name].[contenthash].js",
     clean: true,
     publicPath: "/",
   },
-  mode: "development", // Явно указываем development режим
-  devtool: "source-map", // Добавляем source maps
   module: {
     rules: [
       {
@@ -19,11 +17,19 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [
-              ["@babel/preset-env", { modules: false }],
-              ["@babel/preset-react", { runtime: "automatic" }],
-            ],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
+        },
+      },
+      {
+        test: /\.css$/, // Добавлено правило для CSS
+        use: ["style-loader", "css-loader"], // Порядок важен: сначала css-loader, потом style-loader
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "static/images/[name].[hash][ext]",
         },
       },
     ],
@@ -31,6 +37,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      filename: "index.html",
+      inject: "body",
+      scriptLoading: "defer",
     }),
   ],
   resolve: {
