@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'static/js/bundle.js', // фиксированное имя
+    filename: 'static/js/bundle.js',
     clean: true,
     publicPath: '/'
   },
