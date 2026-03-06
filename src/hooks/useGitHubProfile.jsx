@@ -13,11 +13,6 @@ function useGitHubProfile(username) {
       try {
         const response = await fetch(
           `https://api.github.com/users/${username}`,
-          {
-            headers: {
-              Authorization: `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`,
-            },
-          },
         );
         const data = await response.json();
         setUser(data);

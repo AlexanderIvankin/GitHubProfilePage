@@ -26,11 +26,6 @@ function SearchInput({ onSelectProfile }) {
 
       const response = await fetch(
         `https://api.github.com/users/${encodeURIComponent(searchTerm)}`,
-        {
-          headers: {
-            Authorization: `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`,
-          },
-        },
       );
 
       if (response.status === 404) {

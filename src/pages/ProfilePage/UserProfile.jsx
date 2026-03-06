@@ -22,11 +22,6 @@ function UserProfile({ user }) {
           const response = await fetch(
             `https://api.github.com/users/${user.login}/repos?` +
               `per_page=100&page=${page}&sort=updated`,
-            {
-              headers: {
-                Authorization: `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`,
-              },
-            },
           );
 
           const data = await response.json();
