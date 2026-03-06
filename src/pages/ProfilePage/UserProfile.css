@@ -19,9 +19,10 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
   .user-profile {
     padding-bottom: 10%;
+    top: 195px;
   }
 }
 

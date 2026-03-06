@@ -45,5 +45,10 @@
 @media (max-width: 768px) {
   .background-image {
     background-image: var(--bg-image-mobile);
+    height: 225px;
   }
+
+  .proportion-keeper {
+  height: 225px;
+}
 }
