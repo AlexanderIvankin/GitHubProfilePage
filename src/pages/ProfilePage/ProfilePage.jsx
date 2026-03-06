@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import UserProfile from "./UserProfile";
 import useGitHubProfile from "../../hooks/useGitHubProfile";
@@ -31,12 +31,13 @@ const ProfilePage = () => {
         />
         <div
           className="background-image"
-          style={{ backgroundImage: `url(${bgImage})` }}
+          style={{
+            '--bg-image-desktop': `url(${bgImage})`,
+            '--bg-image-mobile': `url(${bgImageSm})`
+          }}
         ></div>
         <SearchInput onSelectProfile={handleProfileSelect} />
-        {user && (
-          <UserProfile user={user} />
-        )}
+        {user && <UserProfile user={user} />}
       </div>
     </div>
   );

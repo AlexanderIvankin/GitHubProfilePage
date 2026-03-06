@@ -30,7 +30,7 @@
   left: 0;
   top: 0;
 
-  background-image: var(--bg-image);
+  background-image: var(--bg-image-desktop);
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,4 +40,10 @@
   height: 300px;
 
   /* z-index: 0; */
+}
+
+@media (max-width: 768px) {
+  .background-image {
+    background-image: var(--bg-image-mobile);
+  }
 }
